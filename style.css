@@ -1,60 +1,375 @@
-/* Set height to 100% for body and html to enable the background image to cover the whole page: */
-body,
-html {
-  height: 100%;
+:root {
+  --navy: #0f172a;
+  --navy-deep: #0a1120;
+  --teal: #0d9488;
+  --sand: #f5f5f4;
+  --copper: #b08968;
 }
 
-.bgimg {
-  /* Background image */
-  background-image: url("coming-soon.jpg");
-  /* Full-screen */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
   height: 100%;
-  /* Center the background image */
-  background-position: center;
-  /* Scale and zoom in the image */
-  background-size: cover;
-  /* Add position: relative to enable absolutely positioned elements inside the image (place text) */
-  position: relative;
-  /* Add a white text color to all elements inside the .bgimg container */
-  color: white;
-  /* Add a font */
-  font-family: "Courier New", Courier, monospace;
-  /* Set the font-size to 25 pixels */
-  font-size: 25px;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--sand);
+  background:
+    linear-gradient(var(--navy-deep), var(--navy)),
+    repeating-linear-gradient(45deg, rgba(13, 148, 136, 0.05) 0, rgba(13, 148, 136, 0.05) 1px, transparent 1px, transparent 48px),
+    repeating-linear-gradient(-45deg, rgba(13, 148, 136, 0.05) 0, rgba(13, 148, 136, 0.05) 1px, transparent 1px, transparent 48px);
+  background-blend-mode: normal, screen, screen;
 }
 
 a {
-  color: white;
+  color: inherit;
 }
 
-/* Position text in the top-left corner */
-.topleft {
-  position: absolute;
-  top: 0;
-  left: 16px;
-  background-color: rgba(14, 14, 14, 0.7);
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 32px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
-/* Position text in the bottom-left corner */
-.bottomleft {
-  position: absolute;
-  bottom: 0;
-  left: 16px;
-  background-color: rgba(14, 14, 14, 0.7);
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--sand);
 }
 
-/* Position text in the middle */
-.middle {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.brand .mark {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 0;
+}
+
+.brand-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sand);
+  opacity: 0.7;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  opacity: 1;
+  color: var(--teal);
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 32px 80px;
+}
+
+.hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  background-color: rgba(14, 14, 14, 0.7);
+  padding: 40px 0;
 }
 
-/* Style the <hr> element */
-hr {
-  margin: auto;
-  width: 40%;
+.cta-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.button-primary {
+  background: var(--teal);
+  color: var(--navy-deep);
+}
+
+.button-primary:hover {
+  background: #14b8a6;
+}
+
+.button-secondary {
+  border: 1px solid rgba(245, 245, 244, 0.3);
+  color: var(--sand);
+}
+
+.button-secondary:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.section {
+  padding: 64px 0;
+  border-top: 1px solid rgba(245, 245, 244, 0.08);
+}
+
+.section-heading {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 12px;
+}
+
+.section-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 16px;
+}
+
+.section-lede {
+  max-width: 640px;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.85;
+  margin: 0 0 40px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  border: 1px solid rgba(245, 245, 244, 0.08);
+  padding: 28px;
+  background: rgba(245, 245, 244, 0.02);
+}
+
+.card-index {
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--copper);
+  font-size: 0.85rem;
+  margin: 0 0 12px;
+}
+
+.card h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.prose {
+  max-width: 640px;
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.prose p {
+  margin: 0 0 20px;
+}
+
+.notice {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 14px;
+  border: 1px solid rgba(13, 148, 136, 0.4);
+  color: var(--teal);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.contact-form {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.field input,
+.field textarea {
+  background: rgba(245, 245, 244, 0.04);
+  border: 1px solid rgba(245, 245, 244, 0.15);
+  color: var(--sand);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border-radius: 2px;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-alt {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.contact-alt a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.contact-alt a:hover {
+  text-decoration: underline;
+}
+
+.mark {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 1.25;
+  margin-bottom: 28px;
+}
+
+.wordmark {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.word-arabesque {
+  display: block;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  letter-spacing: 0.02em;
+}
+
+.word-labs {
+  display: block;
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  letter-spacing: 0.5em;
+  color: var(--copper);
+  margin-top: 6px;
+  padding-left: 0.5em;
+  /* optically balance the added tracking */
+}
+
+.divider {
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--teal);
+  margin: 18px auto;
+  opacity: 0.6;
+}
+
+.tagline {
+  margin: 32px 0 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--sand);
+  opacity: 0.75;
+}
+
+.status {
+  margin: 12px 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.site-footer {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(245, 245, 244, 0.08);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 20px;
+}
+
+.site-footer a {
+  text-decoration: none;
+  color: var(--sand);
+}
+
+.site-footer a:hover {
+  color: var(--teal);
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  main {
+    padding: 24px 20px 60px;
+  }
 }
